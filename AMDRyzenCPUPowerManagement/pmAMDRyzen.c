@@ -169,7 +169,8 @@ void pmRyzen_init(void *handle){
     pmRyzen_num_phys = 0;
     pmRyzen_num_logi = 0;
     pmRyzen_hpcpus = 0;
-    pmRyzen_pstatelimit = PSTATE_LIMIT;
+    // enables low power state by default
+    pmRyzen_pstatelimit = 2;
     
     while(pkg){
         pkgCount++;
