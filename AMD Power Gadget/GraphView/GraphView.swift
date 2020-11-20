@@ -246,7 +246,7 @@ class GraphView: NSView {
     }
     
     func updateGridLine() {
-        if gridLines.count <= 0 {return}
+        if gridLines.isEmpty {return}
         gridLines.first!.opacity = 1
         gridLines.first!.dataDiff = dataDiff
         gridLines.first!.dataMin = dataMin
