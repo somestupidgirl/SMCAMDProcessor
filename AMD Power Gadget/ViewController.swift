@@ -47,19 +47,10 @@ class ViewController: NSViewController, NSWindowDelegate {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
-            self.sampleData(forced: true)
-        })
+    fileprivate func SetupGraphViews() {
         
         scrollView.scroll(NSPoint(x: 0,y: 0))
-        
-        
-        subtitleLabel.stringValue = ProcessorModel.sysctlString(key: "machdep.cpu.brand_string")
-        
+
         frequencyGraphView.setup()
         freqMaxLine = frequencyGraphView.addLine()
         freqLine = frequencyGraphView.addLine()
@@ -69,11 +60,24 @@ class ViewController: NSViewController, NSWindowDelegate {
         
         temperatureGraphView.setup()
         tempLine = temperatureGraphView.addLine()
-        
-        ViewController.activeSelf = self
-        
+
         timeStart = Date.timeIntervalSinceReferenceDate
-        
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.window?.delegate = self
+
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
+            self.sampleData(forced: true)
+        })
+
+        subtitleLabel.stringValue = ProcessorModel.sysctlString(key: "machdep.cpu.brand_string")
+
+        SetupGraphViews()
+
+        ViewController.activeSelf = self
+
         toggleTranslucency(enabled: UserDefaults.standard.bool(forKey: "usetranslucency"))
         
         sampleData(forced: true)
@@ -82,7 +86,26 @@ class ViewController: NSViewController, NSWindowDelegate {
         
         AppDelegate.updateDockIcon()
     }
-    
+
+    var isMinimzed:Bool=false
+
+
+    func windowDidMiniaturize(_ notification: Notification) {
+        isMinimzed=true
+
+        powerGraphView.canBeDrawn = !isMinimzed
+        temperatureGraphView.canBeDrawn = !isMinimzed
+        powerGraphView.canBeDrawn = !isMinimzed
+    }
+
+    func windowDidDeminiaturize(_ notification: Notification) {
+        isMinimzed=false
+
+        powerGraphView.canBeDrawn = !isMinimzed
+        temperatureGraphView.canBeDrawn = !isMinimzed
+        powerGraphView.canBeDrawn = !isMinimzed
+    }
+
     override func viewWillAppear() {
         view.window?.delegate = self
         view.window?.isMovableByWindowBackground = true
