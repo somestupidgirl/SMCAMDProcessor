@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		485E7BE12790721400C86D03 /* libkmod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 485E7BE02790720A00C86D03 /* libkmod.a */; };
+		485E7BE22790722000C86D03 /* libkmod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 485E7BE02790720A00C86D03 /* libkmod.a */; };
 		5B72086C247C884C00BF7492 /* ISSuperIOIT86XXEFamily.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5B72086A247C884C00BF7492 /* ISSuperIOIT86XXEFamily.hpp */; };
 		5B72086D247C884C00BF7492 /* ISSuperIOIT86XXEFamily.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B72086B247C884C00BF7492 /* ISSuperIOIT86XXEFamily.cpp */; };
 		B5011EA1242E01CC009FB2A2 /* SMCAMDProcessor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B5011EA0242E01CC009FB2A2 /* SMCAMDProcessor.hpp */; };
@@ -66,6 +68,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		485E7BE02790720A00C86D03 /* libkmod.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkmod.a; path = MacKernelSDK/Library/x86_64/libkmod.a; sourceTree = "<group>"; };
 		5B72086A247C884C00BF7492 /* ISSuperIOIT86XXEFamily.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ISSuperIOIT86XXEFamily.hpp; sourceTree = "<group>"; };
 		5B72086B247C884C00BF7492 /* ISSuperIOIT86XXEFamily.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ISSuperIOIT86XXEFamily.cpp; sourceTree = "<group>"; };
 		B5011E9E242E01CC009FB2A2 /* SMCAMDProcessor.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMCAMDProcessor.kext; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485E7BE22790722000C86D03 /* libkmod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485E7BE12790721400C86D03 /* libkmod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +161,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		485E7BDF2790720900C86D03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				485E7BE02790720A00C86D03 /* libkmod.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B5011E9F242E01CC009FB2A2 /* SMCAMDProcessor */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +275,7 @@
 				B56162C52400EF770006A7D8 /* AMD Power Gadget */,
 				B5CE1F7D26B4271800DBF70A /* APGLaunchHelper */,
 				B57D27F523F66AE7002BC699 /* Products */,
+				485E7BDF2790720900C86D03 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -602,22 +616,25 @@
 		B5011EA5242E01CC009FB2A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				DEVELOPMENT_TEAM = QRT57HMJMV;
 				HEADER_SEARCH_PATHS = (
-					"${PROJECT_DIR}/Lilu.kext/Contents/Resources",
-					"${PROJECT_DIR}/VirtualSMC.kext/Contents/Resources",
+					"$(PROJECT_DIR)/Include",
 					"${PROJECT_DIR}/AMDRyzenCPUPowerManagement",
+					"$(PROJECT_DIR)/MacKernelSDK/Headers",
 				);
 				INFOPLIST_FILE = SMCAMDProcessor/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lilu.kext/Contents/Resources/Library";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Library/x86_64";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MODULE_NAME = wtf.spinach.SMCAMDProcessor;
 				MODULE_VERSION = 1.0.0d1;
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = wtf.spinach.SMCAMDProcessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Debug;
@@ -625,22 +642,25 @@
 		B5011EA6242E01CC009FB2A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0.0d1;
+				DEVELOPMENT_TEAM = QRT57HMJMV;
 				HEADER_SEARCH_PATHS = (
-					"${PROJECT_DIR}/Lilu.kext/Contents/Resources",
-					"${PROJECT_DIR}/VirtualSMC.kext/Contents/Resources",
+					"$(PROJECT_DIR)/Include",
 					"${PROJECT_DIR}/AMDRyzenCPUPowerManagement",
+					"$(PROJECT_DIR)/MacKernelSDK/Headers",
 				);
 				INFOPLIST_FILE = SMCAMDProcessor/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lilu.kext/Contents/Resources/Library";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Library/x86_64";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MODULE_NAME = wtf.spinach.SMCAMDProcessor;
 				MODULE_VERSION = 1.0.0d1;
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = wtf.spinach.SMCAMDProcessor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = kext;
 			};
 			name = Release;
@@ -654,6 +674,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = QRT57HMJMV;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -664,7 +685,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "wtf.spinach.AMD-Power-Gadget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -684,13 +705,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = QRT57HMJMV;
 				GCC_PREPROCESSOR_DEFINITIONS = "VERSION_STRING=$(CURRENT_PROJECT_VERSION)";
 				INFOPLIST_FILE = "AMD Power Gadget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "wtf.spinach.AMD-Power-Gadget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -751,7 +773,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				KERNEL_FRAMEWORK_HEADERS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -803,9 +827,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				KERNEL_FRAMEWORK_HEADERS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
@@ -814,9 +841,11 @@
 		B57D27FF23F66AE7002BC699 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 0.7;
+				DEVELOPMENT_TEAM = QRT57HMJMV;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -825,12 +854,12 @@
 					PMRYZEN_IDLE_IO_CSTATE,
 				);
 				HEADER_SEARCH_PATHS = (
-					"${PROJECT_DIR}/Lilu.kext/Contents/Resources",
-					"${PROJECT_DIR}/VirtualSMC.kext/Contents/Resources",
+					"${PROJECT_DIR}/Include",
+					"$(PROJECT_DIR)/MacKernelSDK/Headers",
 				);
 				INFOPLIST_FILE = AMDRyzenCPUPowerManagement/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lilu.kext/Contents/Resources/Library";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Library/x86_64";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MARKETING_VERSION = 0.7;
 				MODULE_NAME = wtf.spinach.AMDRyzenCPUPowerManagement;
 				MODULE_START = amdryzencpupm_kern_start;
@@ -853,6 +882,7 @@
 				OTHER_LDFLAGS = "-static";
 				PRODUCT_BUNDLE_IDENTIFIER = wtf.spinach.AMDRyzenCPUPowerManagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = kext;
 			};
@@ -861,21 +891,23 @@
 		B57D280023F66AE7002BC699 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 0.7;
+				DEVELOPMENT_TEAM = QRT57HMJMV;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 					"MODULE_VERSION=$(MODULE_VERSION)",
 					PMRYZEN_IDLE_IO_CSTATE,
 				);
 				HEADER_SEARCH_PATHS = (
-					"${PROJECT_DIR}/Lilu.kext/Contents/Resources",
-					"${PROJECT_DIR}/VirtualSMC.kext/Contents/Resources",
+					"${PROJECT_DIR}/Include",
+					"$(PROJECT_DIR)/MacKernelSDK/Headers",
 				);
 				INFOPLIST_FILE = AMDRyzenCPUPowerManagement/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Lilu.kext/Contents/Resources/Library";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Library/x86_64";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MARKETING_VERSION = 0.7;
 				MODULE_NAME = wtf.spinach.AMDRyzenCPUPowerManagement;
 				MODULE_START = amdryzencpupm_kern_start;
@@ -898,6 +930,7 @@
 				OTHER_LDFLAGS = "-static";
 				PRODUCT_BUNDLE_IDENTIFIER = wtf.spinach.AMDRyzenCPUPowerManagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = kext;
 			};
@@ -912,12 +945,13 @@
 				CODE_SIGN_ENTITLEMENTS = APGLaunchHelper/APGLaunchHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QRT57HMJMV;
 				INFOPLIST_FILE = APGLaunchHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_BUNDLE_IDENTIFIER = wtf.spinach.APGLaunchHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -935,12 +969,13 @@
 				CODE_SIGN_ENTITLEMENTS = APGLaunchHelper/APGLaunchHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QRT57HMJMV;
 				INFOPLIST_FILE = APGLaunchHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_BUNDLE_IDENTIFIER = wtf.spinach.APGLaunchHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";

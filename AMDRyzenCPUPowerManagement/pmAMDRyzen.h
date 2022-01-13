@@ -90,6 +90,8 @@ typedef struct pmProcessor{
 void pmRyzen_init(void*);
 void pmRyzen_stop(void);
 void pmRyzen_PState_reset(void);
+void pmRyzen_init_PState(void);
+void pmRyzen_doPState_reset(void *);
 float pmRyzen_avgload_pcpu(uint32_t);
 
 uint64_t pmRyzen_machine_idle(uint64_t);

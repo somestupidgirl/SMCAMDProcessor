@@ -279,6 +279,7 @@ private:
     SleepState sleepState;
     
     void initWorkLoop();
+    void startWorkLoop();
     void stopWorkLoop();
     void resumeWorkLoop();
 };

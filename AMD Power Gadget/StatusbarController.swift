@@ -153,7 +153,9 @@ class StatusbarController {
             
         case .rightMouseUp:
             guard let m = menu else {return}
-            statusItem.popUpMenu(m)
+            statusItem.menu = m
+            statusItem.button?.performClick(nil)
+            statusItem.menu = nil
             
         default: break
         }

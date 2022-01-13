@@ -544,8 +544,8 @@ void AMDRyzenCPUPowerManagement::calculateEffectiveFrequency(uint8_t physical){
     //read of last APERF, the effective frequency calculated in is invalid.
     if(APERF <= lastAPERF || MPERF <= lastMPERF) {
         IOLog("AMDCPUSupport::calculateEffectiveFrequency: frequency is invalid for %u", physical);
-        lastAPERF_PerCore[physical] = APERF;
-        lastMPERF_PerCore[physical] = MPERF;
+        lastAPERF_perCore[physical] = APERF;
+        lastMPERF_perCore[physical] = MPERF;
         return;
     }
     
